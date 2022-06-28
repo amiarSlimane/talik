@@ -107,10 +107,11 @@ app.set('view engine', 'ejs')
 
 // 3) ROUTES
 
-const userRouter = require('./routes/userRoutes');
-app.use('/api/v1/users', userRouter);
+const userRoutes = require('./routes/userRoutes');
+app.use('/api/v1/users', userRoutes);
 
-
+const commentRoutes = require('./routes/commentRoutes');
+app.use('/api/v1/comments', commentRoutes);
  
 
 

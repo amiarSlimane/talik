@@ -47,13 +47,13 @@ GET {{host}}/api/v1/users/:id
 ###############Comments#############
 
 ###
-#create a commentfor a given post
-POST {{host}}/api/v1/comments/:post_id
+#create a comment for a given post
+POST {{host}}/api/v1/comments/post_id
 content-type: application/json
 
 {
   "post": "p1",
-  "content": "t1",
+  "content": "t1"
 }
 
 ###
