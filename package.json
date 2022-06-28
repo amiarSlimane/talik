@@ -1,0 +1,42 @@
+{
+  "name": "talik",
+  "version": "1.0.0",
+  "description": "A simple and efficient comment system that could be integrated anywhere ",
+  "main": "index.js",
+  "scripts": {
+    "dev":"NODE_ENV=development nodemon server.js",
+    "prod":"NODE_ENV=production node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/amiarSlimane/talik.git"
+  },
+  "keywords": [
+    "comments"
+  ],
+  "author": "slimane amiar",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/amiarSlimane/talik/issues"
+  },
+  "homepage": "https://github.com/amiarSlimane/talik#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.20.0",
+    "compression": "^1.7.4",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "express-mongo-sanitize": "^2.2.0",
+    "express-rate-limit": "^6.4.0",
+    "helmet": "^5.1.0",
+    "hpp": "^0.2.3",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.4.1",
+    "morgan": "^1.10.0",
+    "validator": "^13.7.0",
+    "xss-clean": "^0.1.1"
+  }
+}
