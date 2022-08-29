@@ -1,0 +1,28 @@
+@host =  http://localhost:3080
+
+
+###############Comments#############
+
+###
+#create a comment for a given post
+POST {{host}}/api/v1/comments/1
+content-type: application/json
+
+{
+  "content": "content 3"
+}
+
+###
+#get all comments
+GET {{host}}/api/v1/comments?limit=100&page=0
+
+
+###
+#get all post comments /post/:post_id
+GET {{host}}/api/v1/comments/post/1?page=3
+
+
+
+###
+#get one comment /:comment_id
+GET {{host}}/api/v1/comments/630c5d1e3ebe995222f919f8

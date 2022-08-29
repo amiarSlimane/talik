@@ -1,0 +1,43 @@
+
+
+@host =  http://localhost:3080
+
+
+###############users#############
+###
+#User signup
+POST {{host}}/api/v1/users/signup
+content-type: application/json
+
+{
+  "first_name": "slimane", 
+  "last_name": "amiar",
+  "email": "slimaneamiar@talik.io",
+  "password":  "password",
+  "passwordConfirm": "password"
+}
+
+
+###
+#User login
+POST {{host}}/api/v1/users/login
+content-type: application/json
+
+{
+  "email": "slimaneamiar@talik.io",
+  "password":  "password"
+}
+
+
+###
+#get users
+GET {{host}}/api/v1/users/
+ 
+###
+#Get one user
+GET {{host}}/api/v1/users/:id
+ 
+
+
+
+ 

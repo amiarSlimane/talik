@@ -1,0 +1,24 @@
+
+
+@host =  http://localhost:3000
+
+
+###############Registry#############
+ 
+
+###
+#Register service
+PUT {{host}}/register/:servicename/:serviceversion/:serviceport
+content-type: application/json
+
+
+###
+#UnRegister service
+DELETE {{host}}/register/:servicename/:serviceversion/:serviceport
+content-type: application/json
+
+ 
+
+
+
+ 
