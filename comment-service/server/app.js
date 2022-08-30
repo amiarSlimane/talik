@@ -1,4 +1,3 @@
-const path = require('path');
 const express = require('express');
 const morgan = require('morgan');
 const rateLimit = require('express-rate-limit');
@@ -16,12 +15,8 @@ const globalErrorHandler = require('./controllers/errorController');
 // Start express app
 const app = express();
 
-
-
 const mongoose = require('mongoose');
  
-
-
 
 
 module.exports = (config) => {
@@ -39,22 +34,15 @@ mongoose
 
   
 
-
 app.enable('trust proxy');
 // Set security HTTP headers
 
 app.use(helmet());
 
-app.use((req, res, next) => {
-  res.setHeader("X-Frame-Options", "ALLOW-FROM http://127.0.0.1:4200 http://localhost:4200");
-  next();
-});
 
 // 1) GLOBAL MIDDLEWARES
 // Implement CORS
 app.use(cors());
- 
-
 app.options('*', cors());
 
 
@@ -114,26 +102,9 @@ app.use('/comments', commentRoutes);
  
 
 
-// index view route
-app.use('/', (req,res,next)=>{
-  console.log('req url', req.url);
-  console.log('req body', req.body);
-  res.json({
-    status:'success',
-    message: 'Hello'
-  })
-});
-
-
-
-
-
-
-
 
 app.all('*', (req, res, next) => {
-  res.status(404).render('index')
-  // next(new AppError(`Can't find ${req.originalUrl} on this server!`, 404));
+   next(new AppError(`Can't find ${req.originalUrl} on this server!`, 404));
 });
 
 app.use(globalErrorHandler);
