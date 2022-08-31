@@ -66,7 +66,9 @@ module.exports = (param) => {
   router.post('/:postId', async (req, res) => {
  
     try {
-      let result = await comments.createOneComment(req.body, req.params.postId);
+      //we cane use rabbitmq version or normal version
+      let result = await comments.createOneCommentAMQP(req.body, req.params.postId);//2493/10s
+      //let result = await comments.createOneComment(req.body, req.params.postId); //2309/10s
 
       return res.json( result);
     }catch (err) {

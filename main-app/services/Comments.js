@@ -3,6 +3,8 @@ const url = require('url');
 const crypto = require('crypto');
 const fs = require('fs');
 const util = require('util');
+const amqplib = require('amqplib');
+
 
 const fsexists = util.promisify(fs.exists);
 
@@ -66,6 +68,16 @@ class CommentsService {
     });
   }
 
+
+  async createOneCommentAMQP(body, postId){
+    const q = 'comments';
+    const conn = await amqplib.connect('amqp://localhost');
+    const ch = await conn.createChannel();
+    await ch.assertQueue(q);
+    const qm = JSON.stringify({body, postId});
+    return ch.sendToQueue(q, Buffer.from(qm, 'utf8'));
+  }
+  
   async createOneComment(body, postId) {
     const {ip, port} = await this.getService('comments-service');
 

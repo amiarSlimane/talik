@@ -4,6 +4,11 @@ const commentController = require('../controllers/commentController');
 
 const router = express.Router();
 
+
+
+
+
+
 router.post('/:postId', commentController.createOneComment);
  
 // Protect all routes after this middleware

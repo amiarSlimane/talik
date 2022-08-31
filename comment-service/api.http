@@ -26,3 +26,7 @@ GET {{host}}/api/v1/comments/post/1?page=3
 ###
 #get one comment /:comment_id
 GET {{host}}/api/v1/comments/630c5d1e3ebe995222f919f8
+
+
+
+{"content": "content 3"}

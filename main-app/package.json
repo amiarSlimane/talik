@@ -4,7 +4,7 @@
   "description": "A simple and efficient comment system that could be integrated anywhere ",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon server.js",
+    "start": "NODE_ENV=development nodemon server.js",
     "dev": "NODE_ENV=development nodemon server.js",
     "prod": "NODE_ENV=production node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/amiarSlimane/talik#readme",
   "dependencies": {
+    "amqplib": "^0.10.2",
     "axios": "^0.27.2",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.20.0",
