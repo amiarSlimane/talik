@@ -11,6 +11,20 @@ const fsexists = util.promisify(fs.exists);
 const CircuitBreaker = require('../lib/CircuitBreaker');
 const circuitBreaker = new CircuitBreaker();
 
+let q = 'comments';
+let ch;
+(async ()=>{
+
+ try{
+  const conn = await amqplib.connect('amqp://localhost');
+  ch = await conn.createChannel();
+  await ch.assertQueue(q);
+ }catch(error){
+  console.error(error)
+ }
+
+})();
+
 class CommentsService {
   constructor({serviceRegistryUrl, serviceVersion}) {
     this.serviceRegistryUrl = serviceRegistryUrl;
@@ -70,10 +84,8 @@ class CommentsService {
 
 
   async createOneCommentAMQP(body, postId){
-    const q = 'comments';
-    const conn = await amqplib.connect('amqp://localhost');
-    const ch = await conn.createChannel();
-    await ch.assertQueue(q);
+    
+   
     const qm = JSON.stringify({body, postId});
     return ch.sendToQueue(q, Buffer.from(qm, 'utf8'));
   }

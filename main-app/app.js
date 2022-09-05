@@ -12,6 +12,7 @@ const bodyParser = require('body-parser')
 const AppError = require('./utils/appError');
 const globalErrorHandler = require('./controllers/errorController');
 const Comments = require('./services/Comments');
+const Users = require('./services/Users');
 const configs = require('./config');
 
 // Start express app
@@ -83,12 +84,14 @@ app.use(compression());
 const config = configs[app.get('env')];
 
 const comments = new Comments(config);
+const users = new Users(config);
 
 const routes = require('./routes');
 // 3) ROUTES
 
 app.use('/api/v1/', routes({
   comments,
+  users,
 }));
 
 
