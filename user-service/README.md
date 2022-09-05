@@ -1,2 +1,0 @@
-# talik
-Comments MicroService.
