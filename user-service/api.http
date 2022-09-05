@@ -1,0 +1,42 @@
+
+
+@host =  http://localhost:3080
+
+
+###############users#############
+###
+#User signup
+POST {{host}}/api/v1/users/signup
+content-type: application/json
+
+{
+  "first_name": "slimane", 
+  "last_name": "amiar",
+  "email": "slimaneamiar@tasasaaaalik.io",
+  "password":  "password",
+  "passwordConfirm": "password"
+}
+
+
+###
+#User login
+POST {{host}}/api/v1/users/login
+content-type: application/json
+
+{
+  "email": "slimaneamiar@talik.io",
+  "password":  "password"
+}
+
+
+###
+#get users
+GET {{host}}/api/v1/users/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzMTQ2MzM1ZGVjZDE0OGRlZGQ3MjZiMiIsImlhdCI6MTY2MjM2OTY3MiwiZXhwIjoxNjcwMTQ1NjcyfQ.Lg_afOA9ZBA422SkLi6YBEdSGrdMiVWKAnMdA858124
+
+
+###
+#Get one user
+GET {{host}}/api/v1/users/63146335decd148dedd726b2
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzMTQ2MzM1ZGVjZDE0OGRlZGQ3MjZiMiIsImlhdCI6MTY2MjM2OTY3MiwiZXhwIjoxNjcwMTQ1NjcyfQ.Lg_afOA9ZBA422SkLi6YBEdSGrdMiVWKAnMdA858124
+ 
