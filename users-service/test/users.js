@@ -6,36 +6,36 @@ describe("Users API", function () {
 
  
 
-  // describe("Signup user", function () {
-  //   var url = "http://localhost:3080/api/v1/users/signup";
-  //   it("returns status 200", function () {
-  //     axios.post(url, {
-  //       "first_name": "slimane", 
-  //       "last_name": "amiar",
-  //       "email": "test@talik.io",
-  //       "password":  "password",
-  //       "passwordConfirm": "password"
-  //     }, function (error, response, body) {
-  //       expect(response.statusCode).to.equal(200);
-  //     });
-  //   });
+  describe("Signup user", function () {
+    var url = "http://localhost:3080/api/v1/users/signup";
+    it("returns status 200", function () {
+      axios.post(url, {
+        "first_name": "slimane", 
+        "last_name": "amiar",
+        "email": "test@talik.io",
+        "password":  "password",
+        "passwordConfirm": "password"
+      }, function (error, response, body) {
+        expect(response.statusCode).to.equal(200);
+      });
+    });
 
-  // });
+  });
 
-  // describe("Login user", function () {
-  //   var url = "http://localhost:3080/api/v1/users/login";
-  //   it("returns status 200", async function () {
-  //     const response = await axios.post(url, {
-  //       "email": "test@talik.io",
-  //       "password":  "password",
-  //     }); 
-  //     // console.log('body', response.data)  
-  //     expect(response.status).to.equal(200);
-  //     expect(response.data.token.length>0).to.equal(true);
+  describe("Login user", function () {
+    var url = "http://localhost:3080/api/v1/users/login";
+    it("returns status 200", async function () {
+      const response = await axios.post(url, {
+        "email": "test@talik.io",
+        "password":  "password",
+      }); 
+      // console.log('body', response.data)  
+      expect(response.status).to.equal(200);
+      expect(response.data.token.length>0).to.equal(true);
       
-  //   });
+    });
 
-  // });
+  });
 
 
 
