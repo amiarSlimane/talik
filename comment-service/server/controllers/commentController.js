@@ -16,14 +16,11 @@ const q = 'comments';
     let channel = await conn.createChannel();
      channel.assertQueue(q).then(() => channel.consume(q, (msg) => {
 
-      // const msg = await channel.consume(q);
       if (msg !== null) {
-        // console.log(`Got message ${msg.content}`);
         const qm = JSON.parse(msg.content.toString());
   
         commentsService.createOneComment({ ...qm.body, postId: qm.postId })
           .then((result) =>{
-            // console.log('result', result);
             channel.ack(msg)});
       }
      }))
@@ -37,7 +34,6 @@ const q = 'comments';
 
 exports.createOneComment = catchAsync(async (req, res) => {
   const body = req.body;
-  console.log('req.params', req.params);
   const postId = req.params.postId;
   body.post = postId;
   const result = await commentsService.createOneComment(body);
