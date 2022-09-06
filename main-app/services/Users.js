@@ -159,12 +159,13 @@ class UsersService {
 
 
 
-  async deleteMe(body) {
+  async deleteMe(req) {
     const {ip, port} = await this.getService('users-service');
-
+    const { headers } = req;
     const reqOptions = {
       method: 'delete',
       url: `http://${ip}:${port}/users/deleteMe`,
+      headers:headers,
     }
 
     return this.callService(reqOptions);
@@ -172,12 +173,16 @@ class UsersService {
 
 
 
-  async deleteUser(userId) {
+  async deleteOneUser(req) {
     const {ip, port} = await this.getService('users-service');
 
+    const { userId } = req.params;
+    const { headers } = req;
+    
     const reqOptions = {
       method: 'delete',
       url: `http://${ip}:${port}/users/${userId}`,
+      headers:headers,
     }
 
     return this.callService(reqOptions);
@@ -206,7 +211,7 @@ class UsersService {
   }
 
   async callService(reqOptions){
-    console.log('callService reqOptions', reqOptions)
+    // console.log('callService reqOptions', reqOptions)
 
     const servicePath = url.parse(reqOptions.url).path;
     const cacheKey = crypto.createHash('md5').update(reqOptions.method + servicePath).digest('hex');

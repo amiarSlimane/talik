@@ -10,7 +10,6 @@ class CircuitBreaker {
 
     async callService(reqOptions){
         const endpoint = `${reqOptions.method}:${reqOptions.url}`;
-        console.log('this.canRequest(endpoint)', this.canRequest(endpoint))
 
         if(!this.canRequest(endpoint)) return false;
 
@@ -18,7 +17,7 @@ class CircuitBreaker {
 
         try{
             const res = await axios(reqOptions);
-            console.log('res ', res);
+            // console.log('res ', res);
             this.onSuccess(endpoint);
             return {statusCode:res.status, data:res.data};
         }catch(error){
@@ -34,7 +33,7 @@ class CircuitBreaker {
                 // The request was made but no response was received
                 // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
                 // http.ClientRequest in node.js
-                console.log('error.request ',error.request);
+                // console.log('error.request ',error.request);
                 this.onFailure(endpoint);
                 return false;
               } else {

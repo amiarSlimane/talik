@@ -12,6 +12,7 @@ module.exports = (param) => {
     console.log('/signup .');
     try {
       let result = await users.signup(req);
+      console.log('signup', result )
       return res.status(result.statusCode).json(result.data);
     } catch (err) {
       return next(new AppError(err, 400));
@@ -106,7 +107,7 @@ module.exports = (param) => {
   });
 
 
-  router.delete('/:id', async (req, res , next) => {
+  router.delete('/:userId', async (req, res , next) => {
 
     try {
       let result = await users.deleteOneUser(req);
@@ -137,6 +138,8 @@ module.exports = (param) => {
     try {
       const userId = req.params.userId;
       let result = await users.getOneUser(req, userId);
+      console.log('result', result);
+
       return res.status(result.statusCode).json(result.data);
     } catch (err) {
       return next(new AppError(err, 400));
