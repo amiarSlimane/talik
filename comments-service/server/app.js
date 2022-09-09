@@ -103,6 +103,29 @@ app.use('/comments', commentRoutes);
 
 
 
+
+
+const swaggerJsdoc = require('swagger-jsdoc');
+
+const options = {
+  definition: {
+    openapi: '3.0.0',
+    info: {
+      title: 'Comments micro-service',
+      version: '1.0.0',
+    },
+  },
+  apis: ['./server/routes/commentRoutes.js'], // files containing annotations as above
+};
+
+const openapiSpecification = swaggerJsdoc(options);
+
+// console.log('./::: ',process.cwd());
+// console.log('openapiSpecification ', openapiSpecification);
+const swaggerUi = require('swagger-ui-express');
+
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(openapiSpecification));
+
 app.all('*', (req, res, next) => {
    next(new AppError(`Can't find ${req.originalUrl} on this server!`, 404));
 });

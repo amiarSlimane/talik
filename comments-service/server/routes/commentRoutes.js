@@ -13,6 +13,16 @@ router.post('/:postId', commentController.createOneComment);
  
 // Protect all routes after this middleware
 // router.use(authController.protect);
+
+/**
+ * @openapi
+ * /:
+ *   get:
+ *     description: Get All comments 
+ *     responses:
+ *       200:
+ *         description: Returns an array of comments.
+ */
 router.get('/', commentController.getAllComments);
 router.get('/post/:postId', commentController.getAllPostComments);
 router.get('/:commentId', commentController.getOneComment);
