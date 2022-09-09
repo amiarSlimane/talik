@@ -2,17 +2,15 @@ const mongoose = require('mongoose');
 const validator = require('validator');
  
 // User
-const userSchema = new mongoose.Schema({
+const commentSchema = new mongoose.Schema({
     post: {
-        type: String,
-        //required: [true, 'please tell us your name']
+        type:mongoose.Types.ObjectId
     },
-    user:{
+    user: {
         type:mongoose.Types.ObjectId
     },
     content: {
         type: String,
-       // required: [true, 'please tell us your name']
     },
     active: {
         type: Boolean,
@@ -23,15 +21,15 @@ const userSchema = new mongoose.Schema({
     timestamps:true
 });
 
-userSchema.pre('save', function (next) {
+commentSchema.pre('save', function (next) {
     
     next();
 });
 
-userSchema.pre(/^find/, function (next) {
+commentSchema.pre(/^find/, function (next) {
     next();
 });
 
-const User = mongoose.model('comment', userSchema)
+const Comment = mongoose.model('comment', commentSchema)
 
-module.exports = User;
+module.exports = Comment;
