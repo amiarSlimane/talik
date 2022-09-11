@@ -3,7 +3,7 @@ const validator = require('validator');
  
 // User
 const postSchema = new mongoose.Schema({
-    host: {
+    domain: {
         type: String,
     },
     user:{
