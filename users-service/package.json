@@ -1,7 +1,7 @@
 {
   "name": "users-service",
   "version": "1.0.0",
-  "description": "A service to manage comments",
+  "description": "A service to manage users",
   "scripts": {
     "start": "NODE_ENV=development nodemon bin/run | bunyan",
     "prod": "pm2 start bin/run --name comments -i max",
