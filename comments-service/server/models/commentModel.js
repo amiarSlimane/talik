@@ -17,6 +17,18 @@ const commentSchema = new mongoose.Schema({
         default: true,
         select: false
     },
+    parent:{
+        type:mongoose.Types.ObjectId
+    },
+    parentModel:{
+        type:String //(comment|post)
+    },
+    score:{
+        type: Number
+    },
+    deleted:{
+        type: Boolean
+    }
 },{
     timestamps:true
 });
