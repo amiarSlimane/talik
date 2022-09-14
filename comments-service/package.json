@@ -14,7 +14,7 @@
     "amqplib": "^0.10.2",
     "axios": "^0.21.1",
     "body-parser": "^1.20.0",
-    "bunyan": "^1.8.12",
+    "bunyan": "^1.8.15",
     "compression": "^1.7.4",
     "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
