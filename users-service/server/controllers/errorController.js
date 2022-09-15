@@ -51,7 +51,7 @@ const sendErrorDev = (err, req, res) => {
   console.error('ERROR 💥', err);
   return res.status(err.statusCode).json({
     status:'error',
-    title: 'Something went wrong!',
+    title: 'Error !',
     msg: err.message
   });
 };
@@ -81,7 +81,7 @@ const sendErrorProd = (err, req, res) => {
   if (err.isOperational) {
     return res.status(err.statusCode).json( {
       status:'error',
-      title: 'Something went wrong!',
+      title: 'Error !',
       msg: err.message
     });
   }
@@ -91,7 +91,7 @@ const sendErrorProd = (err, req, res) => {
   // 2) Send generic message
   return res.status(err.statusCode).json({
     status:'error',
-    title: 'Something went wrong!',
+    title: 'Error !',
     msg: 'Please try again later.'
   });
 };
