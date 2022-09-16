@@ -6,9 +6,14 @@ const getAllComments =  (params)=>{
 }
 
 
-const getAllPostComments = async (params)=>{
-  const {postId, limit, page} = params;
-  return CommentsModel.find({post:postId}).skip(limit*page||0).limit(limit||25);
+const getAllPostComments = async (params, query)=>{
+  const {postId} = params;
+  const { limit, page} = query;
+
+  return CommentsModel.find({post:postId})
+  .skip(limit*page||0)
+  .limit(limit||25)
+  .populate('replies');
 }
 
 const getOneComment = async (commentId)=>{
@@ -19,6 +24,14 @@ const getOneComment = async (commentId)=>{
 const createOneComment = async (body)=>{
   return CommentsModel.create(body);
 }
+
+
+const createOneCommentReply = async (parentCommentId, commentId)=>{
+  return CommentsModel.updateOne(
+    {_id:parentCommentId}, 
+    {$push:{replies:commentId}});
+}
+
 
 const updateOneComment = async (commentId, body)=>{
   return;
@@ -36,4 +49,5 @@ module.exports = {
   updateOneComment,
   deleteOneComment,
   createOneComment,
+  createOneCommentReply,
 }

@@ -92,7 +92,7 @@ class CommentsService {
   
   async createOneComment(body, postId) {
     const {ip, port} = await this.getService('comments-service');
-
+   
     const reqOptions = {
       method: 'post',
       url: `http://${ip}:${port}/comments/${postId}`,
@@ -104,7 +104,19 @@ class CommentsService {
     return this.callService(reqOptions);
   }
 
+  async createOneCommentReply(body, postId, commentId) {
+    const {ip, port} = await this.getService('comments-service');
    
+    const reqOptions = {
+      method: 'post',
+      url: `http://${ip}:${port}/comments/${postId}/comment/${commentId}`,
+      data: body
+    }
+
+    console.log('reqOptions ', reqOptions);
+
+    return this.callService(reqOptions);
+  }
  
 
   async getService(serviceName){

@@ -5,12 +5,25 @@
 
 ###
 #create a comment for a given post
-POST {{host}}/api/v1/comments/1
+POST {{host}}/api/v1/comments/63247ab293a170a9adfb0139
 content-type: application/json
 
 {
-  "content": "content 3"
+  "content": "cccccccccc"
 }
+
+
+
+
+###
+#create a reply for a comment
+POST {{host}}/api/v1/comments/63234781046721450235e6ee/comment/63234781046721450235e6ee
+content-type: application/json
+
+{
+  "content": "this is a repley"
+}
+
 
 ###
 #get all comments

@@ -10,6 +10,7 @@ const router = express.Router();
 
 
 router.post('/:postId', commentController.createOneComment);
+router.post('/:postId/comment/:commentId', commentController.createOneCommentReply);
  
 // Protect all routes after this middleware
 // router.use(authController.protect);

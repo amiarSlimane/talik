@@ -7,7 +7,8 @@ const commentSchema = new mongoose.Schema({
         type:mongoose.Types.ObjectId
     },
     user: {
-        type:mongoose.Types.ObjectId
+        type:mongoose.Types.ObjectId,
+        ref:'user'
     },
     content: {
         type: String,
@@ -28,7 +29,8 @@ const commentSchema = new mongoose.Schema({
     },
     deleted:{
         type: Boolean
-    }
+    },
+    replies:[{type:mongoose.Types.ObjectId,ref:'comment'}]
 },{
     timestamps:true
 });

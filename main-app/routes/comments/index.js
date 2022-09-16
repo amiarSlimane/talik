@@ -67,11 +67,26 @@ module.exports = (param) => {
  
     try {
       //we cane use rabbitmq version or normal version
-      let result = await comments.createOneCommentAMQP(req.body, req.params.postId);//9664/10s
-      //let result = await comments.createOneComment(req.body, req.params.postId); //1876/10s
+      //let result = await comments.createOneCommentAMQP(req.body, req.params.postId);//9664/10s
+      let result = await comments.createOneComment(req.body, req.params.postId); //1876/10s
 
       return res.status(result.statusCode).json(result.data);
     }catch (err) {
+      return next(new AppError(err, 400));
+    }
+
+  });
+
+  router.post('/:postId/comment/:commentId', async (req, res , next) => {
+ 
+
+    try {
+      //let result = await comments.createOneCommentAMQP(req.body, req.params.postId);//9664/10s
+      let result = await comments.createOneCommentReply(req.body, req.params.postId, req.params.commentId); //1876/10s
+
+      return res.status(result.statusCode).json(result.data);
+    }catch (err) {
+      console.log('err-----------------', err);
       return next(new AppError(err, 400));
     }
 
@@ -82,3 +97,5 @@ module.exports = (param) => {
   return router;
 
 }
+
+ 
