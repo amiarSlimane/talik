@@ -24,7 +24,7 @@ app.enable('trust proxy');
 app.use(helmet());
 
 app.use((req, res, next) => {
-  res.setHeader("X-Frame-Options", "ALLOW-FROM http://127.0.0.1:4200 http://localhost:4200");
+  // console.log('req', req)
   next();
 });
 
@@ -51,14 +51,9 @@ if (process.env.NODE_ENV === 'development') {
 
 app.use(express.json({ limit: '1000kb' }));
 
-//vnd.api+json
 
 app.use(express.urlencoded({ extended: true, limit: '1000kb' }));
-
-
-// parse application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({ extended: false }))
-app.use(bodyParser.json({ type: 'application/vnd.api+json' }));
+app.use(bodyParser.json({ type: 'application/json' }));
 
 app.use(cookieParser());
 
