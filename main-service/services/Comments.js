@@ -11,7 +11,7 @@ const fsexists = util.promisify(fs.exists);
 const CircuitBreaker = require('../lib/CircuitBreaker');
 const circuitBreaker = new CircuitBreaker();
 
-const rabbitmqHost = process.env.NODE_ENV=='production'?'rabbitmq':'localhost';
+const rabbitmqHost = process.env.NODE_ENV=='production'?'rabbitmq-service':'localhost';
 
 let q = 'comments';
 let ch;
