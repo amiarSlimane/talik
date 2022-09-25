@@ -12,8 +12,8 @@ services:
     ports:
       - 7000:7000
     depends_on:
-      - registry-service
-      - rabbitmq-service
+      - registry_service
+      - rabbitmq_service
     logging:
       driver: "json-file"
       options:
