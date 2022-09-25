@@ -2,9 +2,18 @@ version: "3.8"
 services:
 
 
+  networks:
+  taliknet:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 192.168.55.0/24
+          gateway: 192.168.55.1
+
   #1 Main service
-  main-service:
-    image: main-service
+  main_service:
+    image: main_service
     build: ./main-service/
     environment:
       NODE_ENV: production
@@ -21,8 +30,8 @@ services:
           max-file: "5"
 
   #2 registry service
-  registry-service:
-    image: registry-service
+  registry_service:
+    image: registry_service
     build: ./registry-service/
     environment:
       NODE_ENV: production
@@ -37,8 +46,8 @@ services:
 
    
   #3 Comments service
-  comments-service:
-    image: comments-service
+  comments_service:
+    image: comments_service
     build: ./comments-service/
     environment:
       NODE_ENV: production
@@ -46,8 +55,8 @@ services:
     ports:
       - 7002:7002
     depends_on:
-      - registry-service
-      - rabbitmq-service
+      - registry_service
+      - rabbitmq_service
     logging:
       driver: "json-file"
       options:
@@ -55,8 +64,8 @@ services:
           max-file: "5"
 
   #4 users service
-  users-service:
-    image: users-service
+  users_service:
+    image: users_service
     build: ./users-service/
     environment:
       NODE_ENV: production
@@ -64,16 +73,19 @@ services:
     ports:
       - 7003:7003
     depends_on:
-      - registry-service
-      - rabbitmq-service
+      - registry_service
+      - rabbitmq_service
     logging:
       driver: "json-file"
       options:
           max-size: "20m"
           max-file: "5"
-  rabbitmq-service:
+  rabbitmq_service:
     image: rabbitmq:3.8-management-alpine
-    container_name: rabbitmq-service
+    container_name: rabbitmq_service
+    networks:
+      taliknet:
+        ipv4_address: 192.168.55.10
     volumes:
       - ~/.docker-conf/rabbitmq/data/:/var/lib/rabbitmq/
       - ~/.docker-conf/rabbitmq/log/:/var/log/rabbitmq

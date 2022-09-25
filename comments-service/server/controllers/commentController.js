@@ -11,7 +11,7 @@ const mongoose = require('mongoose');
 
 const amqplib = require('amqplib');
 
-const rabbitmqHost = process.env.NODE_ENV=='production'?'rabbitmq-service':'localhost';
+const rabbitmqHost = process.env.NODE_ENV=='production'?'192.168.55.10':'localhost';
 const q = 'comments';
 (async () => {
 
