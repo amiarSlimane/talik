@@ -13,6 +13,7 @@ services:
       - 7000:7000
     depends_on:
       - registry-service
+      - rabbitmq
     logging:
       driver: "json-file"
       options:
@@ -46,7 +47,7 @@ services:
       - 7002:7002
     depends_on:
       - registry-service
-
+      - rabbitmq
     logging:
       driver: "json-file"
       options:
@@ -69,6 +70,19 @@ services:
       options:
           max-size: "20m"
           max-file: "5"
-
+  rabbitmq:
+    image: rabbitmq:3.8-management-alpine
+    container_name: rabbitmq
+    volumes:
+      - ~/.docker-conf/rabbitmq/data/:/var/lib/rabbitmq/
+      - ~/.docker-conf/rabbitmq/log/:/var/log/rabbitmq
+    ports:
+      - 15672:15672
+      - 5672:5672
+    logging:
+      driver: "json-file"
+      options:
+          max-size: "20m"
+          max-file: "5"
 volumes:
   data: null

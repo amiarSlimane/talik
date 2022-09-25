@@ -11,12 +11,12 @@ const mongoose = require('mongoose');
 
 const amqplib = require('amqplib');
 
-
+const rabbitmqHost = process.env.NODE_ENV=='production'?'rabbitmq':'localhost';
 const q = 'comments';
 (async () => {
 
   try {
-    let conn = await amqplib.connect('amqp://localhost');
+    let conn = await amqplib.connect(`amqp://${rabbitmqHost}`);
     let channel = await conn.createChannel();
     channel.assertQueue(q).then(() => channel.consume(q, (msg) => {
 

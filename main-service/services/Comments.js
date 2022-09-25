@@ -11,12 +11,14 @@ const fsexists = util.promisify(fs.exists);
 const CircuitBreaker = require('../lib/CircuitBreaker');
 const circuitBreaker = new CircuitBreaker();
 
+const rabbitmqHost = process.env.NODE_ENV=='production'?'rabbitmq':'localhost';
+
 let q = 'comments';
 let ch;
 (async ()=>{
 
  try{
-  const conn = await amqplib.connect('amqp://localhost');
+  const conn = await amqplib.connect(`amqp://${rabbitmqHost}`);
   ch = await conn.createChannel();
   await ch.assertQueue(q);
  }catch(error){
