@@ -1,6 +1,7 @@
 
 
 @host =  http://localhost:3080
+@host =  https://talik.io
 
 
 ###############users#############
@@ -12,7 +13,7 @@ content-type: application/json
 {
   "first_name": "slimane", 
   "last_name": "amiar",
-  "email": "slimaneamiar@tasasaaaalik.io",
+  "email": "slimaneamiar@talik.io",
   "password":  "password",
   "passwordConfirm": "password"
 }

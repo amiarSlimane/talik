@@ -9,7 +9,7 @@ const service = require('../server/service')(config);
 
 const server = http.createServer(service);
 
-server.listen(process.env.PORT || 3000);
+server.listen(process.env.PORT || 7001);
 
 server.on('listening', () => {
   log.info(

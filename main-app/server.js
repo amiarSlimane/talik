@@ -13,7 +13,7 @@ dotenv.config({
 });
 const app = require('./app');
 
-const port = process.env.PORT || 3080;
+const port = process.env.PORT || 7000;
 
 //to use http
  const server = app.listen(port, () => {

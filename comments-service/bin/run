@@ -9,12 +9,11 @@ const service = require('../server/app')(config);
 
 const server = http.createServer(service);
 
-// Important - a service should not have a fixed port but should randomly choose one
-server.listen(0);
+server.listen(process.env.PORT || 7002);
 
 server.on('listening', () => {
-  const registerService = () => axios.put(`http://localhost:3000/register/${config.name}/${config.version}/${server.address().port}`);
-  const unregisterService = () => axios.delete(`http://localhost:3000/unregister/${config.name}/${config.version}/${server.address().port}`);
+  const registerService = () => axios.put(`http://registry-service:7001/register/${config.name}/${config.version}/${server.address().port}`);
+  const unregisterService = () => axios.delete(`http://registry-service:7001/unregister/${config.name}/${config.version}/${server.address().port}`);
 
   registerService();
 

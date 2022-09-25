@@ -1,0 +1,74 @@
+version: "3.8"
+services:
+
+
+  #1 Main service
+  main-service:
+    image: main-service
+    build: ./main-service/
+    environment:
+      NODE_ENV: production
+      PORT: 7000
+    ports:
+      - 7000:7000
+    depends_on:
+      - registry-service
+    logging:
+      driver: "json-file"
+      options:
+          max-size: "20m"
+          max-file: "5"
+
+  #2 registry service
+  registry-service:
+    image: registry-service
+    build: ./registry-service/
+    environment:
+      NODE_ENV: production
+      PORT: 7001
+    ports:
+      - 7001:7001
+    logging:
+      driver: "json-file"
+      options:
+          max-size: "20m"
+          max-file: "5"
+
+   
+  #3 Comments service
+  comments-service:
+    image: comments-service
+    build: ./comments-service/
+    environment:
+      NODE_ENV: production
+      PORT: 7002
+    ports:
+      - 7002:7002
+    depends_on:
+      - registry-service
+
+    logging:
+      driver: "json-file"
+      options:
+          max-size: "20m"
+          max-file: "5"
+
+  #4 users service
+  users-service:
+    image: users-service
+    build: ./users-service/
+    environment:
+      NODE_ENV: production
+      PORT: 7003
+    ports:
+      - 7003:7003
+    depends_on:
+      - registry-service
+    logging:
+      driver: "json-file"
+      options:
+          max-size: "20m"
+          max-file: "5"
+
+volumes:
+  data: null
