@@ -1,7 +1,6 @@
 version: "3.8"
 services:
 
-
   #1 Main service
   main_service:
     image: main_service
@@ -88,6 +87,9 @@ services:
   mongo:
     image: mongo
     restart: always
+    volumes:
+      - ~/.docker-conf/mongo/data/db/:/data/db
+      - ~/.docker-conf/mongo/data/configdb/:/data/configdb
  
 volumes:
   data: null

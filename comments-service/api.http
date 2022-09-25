@@ -1,11 +1,13 @@
 @host =  http://localhost:3080
 
+@host =  https://talik.io/api
+@host =  https://talik.io/test
 
 ###############Comments#############
 
 ###
 #create a comment for a given post
-POST {{host}}/api/v1/comments/63247ab293a170a9adfb0139
+POST {{host}}/v1/comments/63247ab293a170a9adfb0139
 content-type: application/json
 
 {
