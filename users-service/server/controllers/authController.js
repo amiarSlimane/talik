@@ -4,8 +4,8 @@ const {
 } = require('util');
 const jwt = require('jsonwebtoken');
 const User = require('../models/userModel');
-const catchAsync = require('../../../main-app/utils/catchAsync');
-const AppError = require('../../../main-app/utils/appError');
+const catchAsync = require('./../utils/catchAsync');
+const AppError = require('./..//utils/appError');
 const { type } = require('os');
 const userService = require('../services/userService');
 
