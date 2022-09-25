@@ -85,5 +85,9 @@ services:
       options:
           max-size: "20m"
           max-file: "5"
+  mongo:
+    image: mongo
+    restart: always
+ 
 volumes:
   data: null

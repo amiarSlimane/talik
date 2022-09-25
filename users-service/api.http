@@ -1,13 +1,14 @@
 
 
 @host =  http://localhost:3080
-@host =  https://talik.io
+@host =  https://talik.io/api
+@host =  https://talik.io/test
 
 
 ###############users#############
 ###
 #User signup
-POST {{host}}/api/v1/users/signup
+POST {{host}}/v1/users/signup
 content-type: application/json
 
 {
