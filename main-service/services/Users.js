@@ -12,7 +12,7 @@ const CircuitBreaker = require('../lib/CircuitBreaker');
 const circuitBreaker = new CircuitBreaker();
 
 const rabbitmqHost = process.env.NODE_ENV=='production'?'rabbitmq-service':'localhost';
-
+console.log('rabbitmqHost ', rabbitmqHost);
 let q = 'users';
 let ch;
 (async ()=>{
