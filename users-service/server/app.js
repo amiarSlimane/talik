@@ -55,6 +55,9 @@ app.options('*', cors());
 
 
 console.log('process.env.NODE_ENV ', process.env.NODE_ENV);
+const rabbitmqHost = process.env.NODE_ENV=='production'?'rabbitmq-service':'localhost';
+console.log('rabbitmqHost ', rabbitmqHost);
+
 // Development logging
 if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'));
