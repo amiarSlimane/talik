@@ -2,14 +2,6 @@ version: "3.8"
 services:
 
 
-  networks:
-    taliknet:
-      driver: bridge
-      config:
-        - 
-          subnet: 192.168.55.0/24
-          gateway: 192.168.55.1
-
   #1 Main service
   main_service:
     image: main_service
@@ -82,9 +74,6 @@ services:
   rabbitmq_service:
     image: rabbitmq:3.8-management-alpine
     container_name: rabbitmq_service
-    networks:
-      taliknet:
-        ipv4_address: 192.168.55.10
     volumes:
       - ~/.docker-conf/rabbitmq/data/:/var/lib/rabbitmq/
       - ~/.docker-conf/rabbitmq/log/:/var/log/rabbitmq
