@@ -112,6 +112,32 @@ exports.getAllPostComments = catchAsync(async (req, res, next) => {
 })
 
 
+exports.getAllRepliesOfComment = catchAsync(async (req, res, next) => {
+
+  const querySchema = Joi.object({
+    limit: Joi.number().integer().min(0).default(10),
+    page: Joi.number().integer().min(0).default(0),
+  });
+
+
+  await querySchema.validateAsync(req.query);
+
+  let params = {};
+  const commentId = req.params.commentId;
+  params.commentId = commentId;
+
+  const result = await commentsService.getAllPostComments(params, req.query);
+
+  res.status(200).json({
+    status: 'success',
+    data: result,
+  });
+
+
+})
+
+
+
 exports.getOneComment = catchAsync(async (req, res) => {
 
   const commentId = req.params.commentId;

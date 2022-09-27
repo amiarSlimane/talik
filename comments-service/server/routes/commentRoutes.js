@@ -4,11 +4,6 @@ const commentController = require('../controllers/commentController');
 
 const router = express.Router();
 
-
-
-
-
-
 router.post('/:postId', commentController.createOneComment);
 router.post('/:postId/comment/:commentId', commentController.createOneCommentReply);
  
@@ -26,6 +21,7 @@ router.post('/:postId/comment/:commentId', commentController.createOneCommentRep
  */
 router.get('/', commentController.getAllComments);
 router.get('/post/:postId', commentController.getAllPostComments);
+router.get('/reply/:commentId', commentController.getAllRepliesOfComment);
 router.get('/:commentId', commentController.getOneComment);
  
 router.delete('/:id', commentController.deleteOneComment);

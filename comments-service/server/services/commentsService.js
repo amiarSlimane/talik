@@ -16,6 +16,17 @@ const getAllPostComments = async (params, query)=>{
   .populate('replies');
 }
 
+
+const getAllRepliesOfComment = async (params, query)=>{
+  const {commentId} = params;
+  const { limit, page} = query;
+
+  return CommentsModel.findById(commentId)
+  .skip(limit*page||0)
+  .limit(limit||25)
+  .populate('replies');
+}
+
 const getOneComment = async (commentId)=>{
   return CommentsModel.findById(commentId);
 }
@@ -50,4 +61,5 @@ module.exports = {
   deleteOneComment,
   createOneComment,
   createOneCommentReply,
+  getAllRepliesOfComment,
 }
