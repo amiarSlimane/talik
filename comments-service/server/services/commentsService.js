@@ -1,4 +1,5 @@
 const CommentsModel  = require('../models/commentModel');
+const mongoose = require('mongoose');
 
 const getAllComments =  (params)=>{
   const { filter, limit, page} = params;
@@ -7,13 +8,12 @@ const getAllComments =  (params)=>{
 
 
 const getAllPostComments = async (params, query)=>{
+  
   const {postId} = params;
   const { limit, page} = query;
-
-  return CommentsModel.find({post:postId})
-  .skip(limit*page||0)
-  .limit(limit||25)
-  .populate('replies');
+  
+  return CommentsModel.find({post:postId}).skip(limit*page ||0).limit(limit||25);
+ 
 }
 
 
