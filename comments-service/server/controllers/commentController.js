@@ -11,7 +11,7 @@ const mongoose = require('mongoose');
 
 const amqplib = require('amqplib');
 
-const rabbitmqUrl = process.env.NODE_ENV=='production'?'amqp://rabbitmq_service':'amqp://localhost';
+const rabbitmqUrl = process.env.MODE=='docker'?'amqp://rabbitmq_service':'amqp://localhost';
 const q = 'comments';
 (async () => {
 
@@ -95,13 +95,18 @@ exports.getAllPostComments = catchAsync(async (req, res, next) => {
   });
 
 
-  await querySchema.validateAsync(req.query);
-
+  const valid = await querySchema.validateAsync(req.query);
+  
   let params = {};
   const postId = req.params.postId;
   params.postId = postId;
 
-  const result = await commentsService.getAllPostComments(params, req.query);
+  let query = {
+    page:parseInt(req.page),
+    limit:parseInt(req.limit),
+  };
+
+  const result = await commentsService.getAllPostComments(params, query);
 
   res.status(200).json({
     status: 'success',
@@ -126,7 +131,7 @@ exports.getAllRepliesOfComment = catchAsync(async (req, res, next) => {
   const commentId = req.params.commentId;
   params.commentId = commentId;
 
-  const result = await commentsService.getAllPostComments(params, req.query);
+  const result = await commentsService.getAllRepliesOfComment(params, req.query);
 
   res.status(200).json({
     status: 'success',
