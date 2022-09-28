@@ -6,7 +6,7 @@ module.exports = {
   },
   production: {
     sitename: 'Talik',
-    serviceRegistryUrl: "http://registry_service:7001",
+    serviceRegistryUrl: `http://${process.env.MODE == 'docker' ? 'registry_service' : 'localhost'}:7001`,
     serviceVersion: "1.x.x",
   },
 };

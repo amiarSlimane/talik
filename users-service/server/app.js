@@ -30,7 +30,7 @@ module.exports = (config) => {
 
 const log = config.log();
 
-const DB = process.env.NODE_ENV=='production'?'mongodb://mongo:27017/'+config.database:'mongodb://localhost:27017/'+config.database;
+const DB = process.env.MODE=='docker'?'mongodb://mongo:27017/'+config.database:'mongodb://localhost:27017/'+config.database;
 
 mongoose
   .connect(DB, {

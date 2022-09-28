@@ -10,10 +10,11 @@ const service = require('../server/app')(config);
 const server = http.createServer(service);
 
 server.listen(process.env.PORT || 7002);
-
+ 
+const registry_host = process.env.MODE == 'docker' ? 'registry_service' : 'localhost';
 server.on('listening', () => {
-  const registerService = () => axios.put(`http://registry_service:7001/register/${config.name}/${config.version}/${server.address().port}`);
-  const unregisterService = () => axios.delete(`http://registry_service:7001/unregister/${config.name}/${config.version}/${server.address().port}`);
+  const registerService = () => axios.put(`http://${registry_host}:7001/register/${config.name}/${config.version}/${server.address().port}`);
+  const unregisterService = () => axios.delete(`http://${registry_host}:7001/unregister/${config.name}/${config.version}/${server.address().port}`);
 
   registerService();
 
