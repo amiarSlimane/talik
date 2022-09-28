@@ -1,0 +1,33 @@
+{
+  "apps": [
+    {
+      "name": "main-service",
+      "script": "./main-service/server.js",
+      "env": {
+        "NODE_ENV": "production"
+      }
+    },
+    {
+      "name": "registry-service",
+      "script": "./registry-service/bin/run",
+      "env": {
+        "NODE_ENV": "production"
+      }
+    },
+    {
+      "name": "comments-service",
+      "script": "./comments-service/bin/run",
+      "env": {
+        "NODE_ENV": "production"
+      }
+    },
+    {
+      "name": "users-service",
+      "script": "./users-service/bin/run",
+      "env": {
+        "NODE_ENV": "production"
+      }
+    }
+    
+  ]
+}
