@@ -11,7 +11,7 @@ const fsexists = util.promisify(fs.exists);
 const CircuitBreaker = require('../lib/CircuitBreaker');
 const circuitBreaker = new CircuitBreaker();
 
-const rabbitmqUrl = process.env.NODE_ENV=='production'?'amqp://rabbitmq_service':'amqp://localhost';
+const rabbitmqUrl = process.env.MODE=='docker'?'amqp://rabbitmq_service':'amqp://localhost';
 
 let q = 'comments';
 let ch;
@@ -65,6 +65,22 @@ class CommentsService {
     return this.callService({
       method: 'get',
       url: `http://${ip}:${port}/comments/post/${postId}?${queryString}`
+    });
+  }
+  
+  
+  async getAllRepliesOfComment(commentId, query) {
+    const {ip, port} = await this.getService('comments-service');
+
+    let queryString = '';
+    const queryArray = Object.entries(query);
+    queryArray.forEach((item, index)=>{
+      queryString = queryString + item[0]+'='+item[1]+ (index<queryArray.length-1?'&':''); 
+    })
+
+    return this.callService({
+      method: 'get',
+      url: `http://${ip}:${port}/comments/comment/${commentId}?${queryString}`
     });
   }
 

@@ -35,6 +35,23 @@ module.exports = (param) => {
   });
 
 
+  router.get('/reply/:commentId', async (req, res , next) => {
+    
+    try {
+      
+      const commentId = req.params.commentId;
+      let result = await comments.getAllRepliesOfComment(commentId, req.query);
+
+      return res.json( result);
+    }catch (err) {
+      return next(new AppError(err, 400));
+    }
+
+  });
+
+
+
+
   router.get('/:commentId', async (req, res , next) => {
     
     try {
@@ -48,7 +65,6 @@ module.exports = (param) => {
     }
 
   });
-
 
   router.get('/', async (req, res , next) => {
     
