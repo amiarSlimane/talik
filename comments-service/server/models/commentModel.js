@@ -35,6 +35,13 @@ const commentSchema = new mongoose.Schema({
     timestamps:true
 });
 
+let Populate = (field) => function (next) {
+    this.populate(field);
+    next();
+  };
+commentSchema
+  .pre('find', Populate('replies'));
+
 commentSchema.pre('save', function (next) {
     
     next();
