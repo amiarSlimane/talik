@@ -7,6 +7,7 @@ services:
     build: ./main-service/
     environment:
       NODE_ENV: production
+      MODE: docker
       PORT: 7000
     ports:
       - 7000:7000
@@ -25,6 +26,7 @@ services:
     build: ./registry-service/
     environment:
       NODE_ENV: production
+      MODE: docker
       PORT: 7001
     ports:
       - 7001:7001
@@ -41,6 +43,7 @@ services:
     build: ./comments-service/
     environment:
       NODE_ENV: production
+      MODE: docker
       PORT: 7002
     ports:
       - 7002:7002
@@ -59,6 +62,7 @@ services:
     build: ./users-service/
     environment:
       NODE_ENV: production
+      MODE: docker
       PORT: 7003
     ports:
       - 7003:7003
