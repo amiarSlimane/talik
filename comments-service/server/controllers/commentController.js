@@ -63,17 +63,13 @@ exports.createOneComment = catchAsync(async (req, res, next) => {
 
 exports.createOneCommentReply = catchAsync(async (req, res) => {
   const body = req.body;
-  const postId = req.params.postId;
   const commentId = req.params.commentId;
-  body.post = postId;
 
   const commentSchema = Joi.object({
     content: Joi.string().required(),
-    post: Joi.string().required(),
   });
 
   await commentSchema.validateAsync(body);
-
   const comment = await commentsService.createOneComment(body);
   const result = await commentsService.createOneCommentReply(commentId, comment._id);
 
