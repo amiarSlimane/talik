@@ -5,7 +5,7 @@ var cp = require('child_process')
 var os = require('os')
 
 // get library path
-var lib = resolve(__dirname, '../api/')
+var lib = resolve(__dirname, './')
 
 fs.readdirSync(lib)
   .forEach(function (mod) {
