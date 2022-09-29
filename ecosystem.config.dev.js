@@ -1,5 +1,6 @@
-{
-  "apps": [
+module.exports = {
+  apps : [
+    
     {
       "name": "main-service",
       "script": "./main-service/server.js",
@@ -36,6 +37,7 @@
         "NODE_ENV": "development"
       }
     }
-    
-  ]
-}
+],
+
+ 
+};

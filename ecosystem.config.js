@@ -1,5 +1,6 @@
-{
-  "apps": [
+module.exports = {
+  apps : [
+    
     {
       "name": "main-service",
       "script": "./main-service/server.js",
@@ -28,6 +29,18 @@
         "NODE_ENV": "production"
       }
     }
-    
-  ]
-}
+],
+
+  deploy : {
+    production : {
+      user : 'slimane',
+      host : 'talik.io',
+      ref  : 'origin/main',
+      repo : 'git@github.com:amiarSlimane/talik.git',
+      path : '~/',
+      'pre-deploy-local': '',
+      'post-deploy' : 'npm install && pm2 reload ecosystem.config.js --env production',
+      'pre-setup': ''
+    }
+  }
+};
