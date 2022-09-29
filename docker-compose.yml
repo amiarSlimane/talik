@@ -10,7 +10,7 @@ services:
       MODE: docker
       PORT: 7000
     ports:
-      - 7000:7000
+      - 8000:7000
     depends_on:
       - registry_service
       - rabbitmq_service
@@ -29,7 +29,7 @@ services:
       MODE: docker
       PORT: 7001
     ports:
-      - 7001:7001
+      - 8001:7001
     logging:
       driver: "json-file"
       options:
@@ -46,7 +46,7 @@ services:
       MODE: docker
       PORT: 7002
     ports:
-      - 7002:7002
+      - 8002:7002
     depends_on:
       - registry_service
       - rabbitmq_service
@@ -65,7 +65,7 @@ services:
       MODE: docker
       PORT: 7003
     ports:
-      - 7003:7003
+      - 8003:7003
     depends_on:
       - registry_service
       - rabbitmq_service
