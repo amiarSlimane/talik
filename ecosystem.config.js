@@ -37,7 +37,7 @@ module.exports = {
       host : 'talik.io',
       ref  : 'origin/main',
       repo : 'git@github.com:amiarSlimane/talik.git',
-      path : '~/',
+      path : '/home/slimane',
       'pre-deploy-local': '',
       'post-deploy' : 'npm install && pm2 reload ecosystem.config.js --env production',
       'pre-setup': ''
