@@ -39,7 +39,7 @@ module.exports = {
       repo : 'https://github.com/amiarSlimane/talik.git',
       path : '/home/slimane/talik/api',
       'pre-deploy-local': '',
-      'post-deploy' : 'npm install && pm2 reload ecosystem.config.js --env production',
+      'post-deploy' : 'node install.js && pm2 reload ecosystem.config.js --env production',
       'pre-setup': ''
     }
   }
