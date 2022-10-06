@@ -4,15 +4,24 @@ module.exports = {
     {
       "name": "main-service",
       "script": "./main-service/server.js",
-      "env": {
+      "env_production": {
         "NODE_ENV": "production"
+      },
+      "env_production": {
+        "NODE_ENV": "production"
+      },
+      "env_development": {
+         "NODE_ENV": "development"
       }
     },
     {
       "name": "registry-service",
       "script": "./registry-service/bin/run",
-      "env": {
+      "env_production": {
         "NODE_ENV": "production"
+      },
+      "env_development": {
+         "NODE_ENV": "development"
       }
     },
     {
@@ -20,13 +29,19 @@ module.exports = {
       "script": "./comments-service/bin/run",
       "env": {
         "NODE_ENV": "production"
+      },
+      "env_development": {
+         "NODE_ENV": "development"
       }
     },
     {
       "name": "users-service",
       "script": "./users-service/bin/run",
-      "env": {
+      "env_production": {
         "NODE_ENV": "production"
+      },
+      "env_development": {
+         "NODE_ENV": "development"
       }
     }
 ],
