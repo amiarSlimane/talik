@@ -1,12 +1,12 @@
 ## Usage
 To run the services you can use pm2 or docker.
 
-pm2 for on development environment 
+pm2 for development environment 
 ```
 pm2-dev start ecosystem.config.json
 ```
 
-pm2 for on production environment 
+pm2 for production environment 
 ```
 pm2 start ecosystem.config.json
 ```
