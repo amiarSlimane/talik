@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const validator = require('validator');
  
 // User
 const commentSchema = new mongoose.Schema({
@@ -37,6 +36,7 @@ const commentSchema = new mongoose.Schema({
 
 let Populate = (field) => function (next) {
     this.populate(field);
+    this.sort({_id:-1});
     next();
   };
 commentSchema
