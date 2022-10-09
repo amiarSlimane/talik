@@ -62,7 +62,7 @@ const limiter = rateLimit({
   message: 'Too many requests from this IP, please try again in an hour!'
 });
 
-app.use('/api', limiter);
+app.use('/comments', limiter);
 
 app.use(express.json({ limit: '100kb' }));
 
